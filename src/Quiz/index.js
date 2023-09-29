@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from './styles.module.css'
 import React from "react";
-import useListQuestions from "./hooks/useListQusetion";
+import useListQuestions from "./hooks/useListQuestion";
 import Startpage from "./StartPage";
 import SemiCircleProgressBar from "./SemiCircleProgressbar";
 
@@ -98,7 +98,8 @@ function Quiz(){
             }, 1000); // Update every second
 
             return () => clearInterval(interval); // Cleanup on unmount
-    }, [seconds,allow,open]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [seconds]);
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return (
@@ -201,7 +202,7 @@ function Quiz(){
                             <h3>Your Result</h3>
                             <div>
                                 <SemiCircleProgressBar percentage={progress} />
-                                <p style={{marginTop: '-29px'}}>{progress}%</p>
+                                <p style={{marginTop: -'-29px'}}>{progress}%</p>
                             </div>
                                 <span className={styles.correct_answer}> {result.correctAnswers} Correct</span>
                                 <span className={styles.wrong_answer}> {result.wrongAnswers} Incorrect</span>
@@ -214,16 +215,16 @@ function Quiz(){
                     )}    
                 </div>
             : 
-                !open && <Startpage setAllow={setAllow} allow={allow} setSeconds={setSeconds} createData={createData} setOpen={setOpen} open={open}/>}
-                {open && (
-                    <>
-                        <h1>Time Up</h1>
-                        <img src='https://img.freepik.com/premium-photo/time-up-word-with-clock-yellow-background_121826-322.jpg' alt='img'/>
-                        <h2>Better Luck for next Time</h2>
-                    </>
-                )}
-            
-            
+                !open && <Startpage setAllow={setAllow} allow={allow} setSeconds={setSeconds} createData={createData} setOpen={setOpen} open={open}/>
+            }
+            {open && (
+                <>
+                    <h1>Time Up</h1>
+                    <img src='https://img.freepik.com/premium-photo/time-up-word-with-clock-yellow-background_121826-322.jpg' alt='img'/>
+                    <h2>Better Luck for next Time</h2>
+                </>
+            )}
+
         </>
     )
 };

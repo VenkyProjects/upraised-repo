@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './SemiCircleProgressBar.css'; // Import your custom CSS
+import styles from './styles.module.css'
 
 function SemiCircleProgressBar({ percentage }) {
   const [offset, setOffset] = useState(0);
@@ -14,15 +14,15 @@ function SemiCircleProgressBar({ percentage }) {
   }, [percentage]);
 
   return (
-    <svg className="semi-circle">
+    <svg className={styles.semi_circle}>
       <circle
-        className="semi-circle-bg"
+        className={styles.semi_circle_bg}
         cx="50"
         cy="50"
         r="45"
       />
       <circle
-        className="semi-circle-progress"
+        className={styles.semi_circle_progress}
         cx="50"
         cy="50"
         r="45"

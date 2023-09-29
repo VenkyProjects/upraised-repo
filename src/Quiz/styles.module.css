@@ -156,3 +156,21 @@ margin: 0;
   border-top-left-radius: 122px;
   border-top-right-radius: 122px;
 }
+
+.semi_circle {
+  width: 100px; /* Adjust the width and height as needed */
+  height: 50px;
+}
+
+.semi_circle_bg {
+  fill: none;
+  stroke: #ccc; /* Background color */
+  stroke-width: 10;
+}
+
+.semi_circle_progress {
+  fill: none;
+  stroke: #007bff; /* Progress color */
+  stroke-width: 10;
+  transition: stroke-dashoffset 0.3s ease;
+}

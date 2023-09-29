@@ -4,6 +4,7 @@ import React from "react";
 // import ProgressBar from "./ProgressBar";
 import useListQuestions from "./hooks/useListQusetion";
 import Startpage from "./StartPage";
+import SemiCircleProgressBar from "./SemiCircleProgressbar";
 // import SemiCircleProgressBar from "react-progressbar-semicircle";
 
 function Quiz(){
@@ -21,7 +22,7 @@ function Quiz(){
     const [seconds, setSeconds] = useState(0);
     const[submittedAnswers,setSubmittedAnswers]=useState([])
     const[accepted,setAccepted]=useState(false)
-    const [selectedOption, setSelectedOption] = useState('');
+    // const [selectedOption, setSelectedOption] = useState('');
     const [questionIndex, setQuestionIndex] = useState(0);
     const[open,setOpen]=useState(false)
 
@@ -67,12 +68,8 @@ function Quiz(){
         setAccepted(!accepted)
 
     }
-
-    // Function to handle radio button selection
-    const handleOptionChange = (event) => {
-        setSelectedOption(event.target.value);
-    };
     const progress=!createLoading && (result.score/(createData.length*5))*100;
+    console.log(progress,'progress');
     const currentQuestion = createLoading ? 'loading' : createData[questionIndex];
 
     const onAnswerSelected = (answer,index) => {
@@ -103,7 +100,7 @@ function Quiz(){
             }, 1000); // Update every second
 
             return () => clearInterval(interval); // Cleanup on unmount
-    }, [seconds]);
+    }, [seconds,allow,open]);
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return (
@@ -184,8 +181,8 @@ function Quiz(){
                                             key={answer}
                                             onClick={() => onAnswerSelected(answer, index)}
                                             className={
-                                                submittedAnswers[questionIndex] === answer &&
-                                                answer === currentQuestion.correct_answer || answer === currentQuestion.correct_answer
+                                                (submittedAnswers[questionIndex] === answer &&
+                                                answer === currentQuestion.correct_answer) || answer === currentQuestion.correct_answer
                                                 ? styles.correct
                                                 : submittedAnswers[questionIndex] === answer &&
                                                 answer !== currentQuestion.correct_answer
@@ -215,6 +212,7 @@ function Quiz(){
                         <>
                             <div className={styles.result}>
                             <h3>Your Result</h3>
+                            <SemiCircleProgressBar percentage={progress} />
                             {/* <ProgressBar progress={progress}/> */}
                                 <span className={styles.correct_answer}> {result.correctAnswers} Correct</span>
                                 <span className={styles.wrong_answer}> {result.wrongAnswers} Incorrect</span>

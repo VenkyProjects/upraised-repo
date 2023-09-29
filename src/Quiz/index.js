@@ -270,7 +270,7 @@ function Quiz(){
                             <h3>Your Result</h3>
                             <div>
                                 <SemiCircleProgressBar percentage={progress} />
-                                <p style={{marginTop: -'-29px'}}>{progress}%</p>
+                                <p style={{marginTop: '-29px'}}>{progress}%</p>
                             </div>
                                 <span className={styles.correct_answer}> {result.correctAnswers} Correct</span>
                                 <span className={styles.wrong_answer}> {result.wrongAnswers} Incorrect</span>

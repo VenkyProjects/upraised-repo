@@ -256,7 +256,6 @@ function Quiz(){
                                             {questionIndex === createData.length - 1 ? 'Finish' : 'Next'}
                                         </button>
                                     </div>
-                                    <p>nj</p>
                                     </>
                                 )
                                 

@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from './styles.module.css'
 import React from "react";
-// import ProgressBar from "./ProgressBar";
 import useListQuestions from "./hooks/useListQusetion";
 import Startpage from "./StartPage";
 import SemiCircleProgressBar from "./SemiCircleProgressbar";
-// import SemiCircleProgressBar from "react-progressbar-semicircle";
 
 function Quiz(){
     const{createData,createLoading}=useListQuestions()
@@ -112,16 +110,6 @@ function Quiz(){
                         <div>
                             <div style={{ display: 'flex', alignItems: 'center',justifyContent:'center' }}>
                             <div className={styles.progress} style={{ position: 'relative', width: '200px',marginTop:'-156px'}}>
-                                {/* <SemiCircleProgressBar
-                                    percentage={((activeQuestion + 1) / createData.length) * 100}
-                                >
-                                    <svg
-                                        style={{
-                                            transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s',
-                                            background:'white',
-                                        }}
-                                    />
-                                </SemiCircleProgressBar> */}
                                 <div
                                         style={{
                                             position: 'absolute',
@@ -181,8 +169,7 @@ function Quiz(){
                                             key={answer}
                                             onClick={() => onAnswerSelected(answer, index)}
                                             className={
-                                                (submittedAnswers[questionIndex] === answer &&
-                                                answer === currentQuestion.correct_answer) || answer === currentQuestion.correct_answer
+                                                ((submittedAnswers[questionIndex] === answer && answer === currentQuestion.correct_answer) || (answer === currentQuestion.correct_answer))
                                                 ? styles.correct
                                                 : submittedAnswers[questionIndex] === answer &&
                                                 answer !== currentQuestion.correct_answer
@@ -214,8 +201,8 @@ function Quiz(){
                             <h3>Your Result</h3>
                             <div>
                                 <SemiCircleProgressBar percentage={progress} />
+                                <p style={{marginTop: '-29px'}}>{progress}%</p>
                             </div>
-                            {/* <ProgressBar progress={progress}/> */}
                                 <span className={styles.correct_answer}> {result.correctAnswers} Correct</span>
                                 <span className={styles.wrong_answer}> {result.wrongAnswers} Incorrect</span>
                             </div>

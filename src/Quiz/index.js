@@ -4,6 +4,7 @@ import React from "react";
 import useListQuestions from "./hooks/useListQuestion";
 import Startpage from "./StartPage";
 import SemiCircleProgressBar from "./SemiCircleProgressbar";
+import CircularProgressBar from "./CircularProgressBar";
 
 function Quiz(){
     const{createData,createLoading}=useListQuestions()
@@ -108,7 +109,8 @@ function Quiz(){
                     { !showResult  ? (
                         <div>
                             <div style={{ display: 'flex', alignItems: 'center',justifyContent:'center' }}>
-                            <div className={styles.progress} style={{ position: 'relative', width: '200px',marginTop:'-156px'}}>
+                            <div className={styles.progress} style={{ position: 'relative', width: '140px',marginTop:'-98px'}}>
+                                <CircularProgressBar percentage={((activeQuestion + 1) / createData.length) * 100}/>  
                                 <div
                                         style={{
                                             position: 'absolute',
@@ -197,17 +199,17 @@ function Quiz(){
                     ) : (
                         <>
                             <div className={styles.result}>
-                            <h3>Your Result</h3>
-                            <div>
-                                <SemiCircleProgressBar percentage={progress} />
-                                <p style={{marginTop: '-29px'}}>{progress}%</p>
-                            </div>
+                                <h3>Your Result</h3>
+                                <div style={{height: '220px',display:'flex',justifyContent:'center'}}>
+                                    <SemiCircleProgressBar value={progress} />
+                                </div>
                                 <span className={styles.correct_answer}> {result.correctAnswers} Correct</span>
                                 <span className={styles.wrong_answer}> {result.wrongAnswers} Incorrect</span>
-                            </div>
-                            <div className={styles.buttons}>
-                                <button onClick={()=>handleStartAgain()} >Start Again</button>
-                                <button onClick={()=>handleReviewAnswers()} >Review Answers</button>
+                                
+                                <div className={styles.buttons}>
+                                    <button  onClick={()=>handleStartAgain()} >Start Again</button>
+                                    <button style={{background:'#95794e'}} onClick={()=>handleReviewAnswers()} >Review Answers</button>
+                                </div>
                             </div>
                         </>
                     )}    

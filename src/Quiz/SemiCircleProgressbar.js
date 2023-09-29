@@ -6,13 +6,13 @@ function SemiCircleProgressBar({ percentage }) {
 
   useEffect(() => {
     const progress = Math.min(Math.max(percentage, 0), 100);
-    const circumference = 2 * Math.PI * 50; // Assuming a radius of 50 units
+    const circumference = 1 * Math.PI * 50; // Assuming a radius of 50 units
 
     // Calculate the offset value for the stroke-dashoffset CSS property
     const offsetValue = ((100 - progress) / 100) * circumference;
     setOffset(offsetValue);
   }, [percentage]);
-
+  console.log(offset,'offset123');
   return (
     <svg className={styles.semi_circle}>
       <circle

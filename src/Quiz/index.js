@@ -212,7 +212,9 @@ function Quiz(){
                         <>
                             <div className={styles.result}>
                             <h3>Your Result</h3>
-                            <SemiCircleProgressBar percentage={progress} />
+                            <div>
+                                <SemiCircleProgressBar percentage={progress} />
+                            </div>
                             {/* <ProgressBar progress={progress}/> */}
                                 <span className={styles.correct_answer}> {result.correctAnswers} Correct</span>
                                 <span className={styles.wrong_answer}> {result.wrongAnswers} Incorrect</span>

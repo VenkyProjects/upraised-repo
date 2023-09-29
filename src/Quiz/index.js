@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from './styles.module.css'
 import React from "react";
-// import ProgressBar from "./ProgressBar";
-import useListQuestions from "./hooks/useListQusetion";
+import useListQuestions from "./hooks/useListQuestion";
 import Startpage from "./StartPage";
-// import SemiCircleProgressBar from "react-progressbar-semicircle";
+import SemiCircleProgressBar from "./SemiCircleProgressbar";
+import CircularProgressBar from "./CircularProgressBar";
 
 function Quiz(){
     const{createData,createLoading}=useListQuestions()
@@ -21,7 +21,6 @@ function Quiz(){
     const [seconds, setSeconds] = useState(0);
     const[submittedAnswers,setSubmittedAnswers]=useState([])
     const[accepted,setAccepted]=useState(false)
-    const [selectedOption, setSelectedOption] = useState('');
     const [questionIndex, setQuestionIndex] = useState(0);
     const[open,setOpen]=useState(false)
 
@@ -67,11 +66,6 @@ function Quiz(){
         setAccepted(!accepted)
 
     }
-
-    // Function to handle radio button selection
-    const handleOptionChange = (event) => {
-        setSelectedOption(event.target.value);
-    };
     const progress=!createLoading && (result.score/(createData.length*5))*100;
     const currentQuestion = createLoading ? 'loading' : createData[questionIndex];
 
@@ -103,6 +97,7 @@ function Quiz(){
             }, 1000); // Update every second
 
             return () => clearInterval(interval); // Cleanup on unmount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds]);
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -114,17 +109,8 @@ function Quiz(){
                     { !showResult  ? (
                         <div>
                             <div style={{ display: 'flex', alignItems: 'center',justifyContent:'center' }}>
-                            <div className={styles.progress} style={{ position: 'relative', width: '200px',marginTop:'-156px'}}>
-                                {/* <SemiCircleProgressBar
-                                    percentage={((activeQuestion + 1) / createData.length) * 100}
-                                >
-                                    <svg
-                                        style={{
-                                            transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s',
-                                            background:'white',
-                                        }}
-                                    />
-                                </SemiCircleProgressBar> */}
+                            <div className={styles.progress} style={{ position: 'relative', width: '140px',marginTop:'-98px'}}>
+                                <CircularProgressBar percentage={((activeQuestion + 1) / createData.length) * 100}/>  
                                 <div
                                         style={{
                                             position: 'absolute',
@@ -184,8 +170,7 @@ function Quiz(){
                                             key={answer}
                                             onClick={() => onAnswerSelected(answer, index)}
                                             className={
-                                                submittedAnswers[questionIndex] === answer &&
-                                                answer === currentQuestion.correct_answer || answer === currentQuestion.correct_answer
+                                                ((submittedAnswers[questionIndex] === answer && answer === currentQuestion.correct_answer) || (answer === currentQuestion.correct_answer))
                                                 ? styles.correct
                                                 : submittedAnswers[questionIndex] === answer &&
                                                 answer !== currentQuestion.correct_answer
@@ -215,29 +200,32 @@ function Quiz(){
                     ) : (
                         <>
                             <div className={styles.result}>
-                            <h3>Your Result</h3>
-                            {/* <ProgressBar progress={progress}/> */}
+                                <h3>Your Result</h3>
+                                <div style={{height: '220px',display:'flex',justifyContent:'center'}}>
+                                    <SemiCircleProgressBar value={progress} />
+                                </div>
                                 <span className={styles.correct_answer}> {result.correctAnswers} Correct</span>
                                 <span className={styles.wrong_answer}> {result.wrongAnswers} Incorrect</span>
-                            </div>
-                            <div className={styles.buttons}>
-                                <button onClick={()=>handleStartAgain()} >Start Again</button>
-                                <button onClick={()=>handleReviewAnswers()} >Review Answers</button>
+                                
+                                <div className={styles.buttons}>
+                                    <button  onClick={()=>handleStartAgain()} >Start Again</button>
+                                    <button style={{background:'#95794e'}} onClick={()=>handleReviewAnswers()} >Review Answers</button>
+                                </div>
                             </div>
                         </>
                     )}    
                 </div>
             : 
-                !open && <Startpage setAllow={setAllow} allow={allow} setSeconds={setSeconds} createData={createData} setOpen={setOpen} open={open}/>}
-                {open && (
-                    <>
-                        <h1>Time Up</h1>
-                        <img src='https://img.freepik.com/premium-photo/time-up-word-with-clock-yellow-background_121826-322.jpg' alt='img'/>
-                        <h2>Better Luck for next Time</h2>
-                    </>
-                )}
-            
-            
+                !open&&<Startpage setAllow={setAllow} allow={allow} setSeconds={setSeconds} createData={createData} setOpen={setOpen} open={open}/>
+            }
+            {open && (
+                <>
+                    <h1>Time Up</h1>
+                    <img src='https://img.freepik.com/premium-photo/time-up-word-with-clock-yellow-background_121826-322.jpg' alt='img'/>
+                    <h2>Better Luck for next Time</h2>
+                </>
+            )}
+
         </>
     )
 };

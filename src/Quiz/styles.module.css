@@ -1,6 +1,5 @@
 body {
     font-family: 'Anek Malayalam', sans-serif;
-    /* background: linear-gradient(90.04deg, #a9d374 0.03%, #eba8b3 99.96%); */
     background: linear-gradient(90.04deg, white 0%, #AF9CF3 100%);
     color: #11052c;
     display: flex;
@@ -11,24 +10,30 @@ body {
   
   .quiz_container {
     max-width: 500px;
+    width:500px;
     min-width: 250px;
     background: #ffffff;
     border-radius: 4px;
     margin-top: 100px;
     padding: 30px 60px;
     border-radius: 20px;
+    @media screen and (max-width:768px){
+      width:300px;
+    }
   }
   
   .quiz_container .active_question_no {
     font-size: 32px;
     font-weight: 500;
-    color: #800080;
+    font-style: italic;
+    color: #000000;
+    font-weight: 900;
   }
   
   .quiz_container .total_question {
     font-size: 16px;
     font-weight: 500;
-    color: #e0dee3;
+    color: #999999;
   }
   
   .quiz_container h2 {
@@ -83,7 +88,7 @@ body {
     border-radius: 40px;
     cursor: pointer;
     margin-top: 15px;
-    width: 250px;
+    /* width: 250px; */
     height:45px;
     
   }
@@ -118,15 +123,13 @@ body {
     border-radius: 10px;
 }
 .wrong_answer{
-    padding: 10px 20px;
-    border: 1px solid #800080;
+    padding: 16px 20px;
     border-radius: 10px;
-    background: #f19092;
+    background-color: #f19092;
 }
 .correct_answer{
-    padding: 10px 20px;
+    padding: 16px 20px;
     background: #8af3bc;
-    border: 1px solid #800080;
     border-radius: 10px;
 }
 .buttons{
@@ -155,4 +158,59 @@ margin: 0;
   background: white;
   border-top-left-radius: 122px;
   border-top-right-radius: 122px;
+}
+
+.semi_circle {
+  width: 100px; /* Adjust the width and height as needed */
+  height: 50px;
+}
+
+.semi_circle_bg {
+  fill: none;
+  stroke: #ccc; /* Background color */
+  stroke-width: 10;
+}
+
+.semi_circle_progress {
+  fill: none;
+  stroke: #37cc37;
+  /* stroke: #007bff; */
+  stroke-width: 10;
+  transition: stroke-dashoffset 0.3s ease;
+}
+.needle{
+  stroke: black;
+  stroke-width: 6;
+  border-radius: 0em;
+  transform-origin: center;
+  transition: transform 0.5s ease;
+}
+.dial{
+  fill: transparent;
+  stroke-width: 10;
+}
+.inner_circle{
+  fill: transparent;
+  stroke: #EBEDF5;
+  stroke-width: 45;
+}
+.speedometer{
+  width: 250px;
+  height: 290px;
+  position: relative;
+}
+.arrow {
+  transform-origin: center;
+  transform: rotate(180deg); /* Rotate the arrow 180 degrees to make it point upwards */
+  width: 20px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
+}
+.percentage_text{
+  font-size: 20px;
+  font-weight: 900;
+}
+.inner_circles{
+  fill: transparent;
+  stroke: #EBEDF5;
+  stroke-width: 2;
 }

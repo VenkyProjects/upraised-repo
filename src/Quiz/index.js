@@ -7,68 +7,6 @@ import SemiCircleProgressBar from "./SemiCircleProgressbar";
 
 function Quiz(){
     const{createData,createLoading}=useListQuestions()
-    // const createData=[
-    //     {
-    //         "question_id": "7e645fda-64d2-4a1f-8be4-669f8e86626d",
-    //         "question_text": "How can a datatype be declared to be a constant type?",
-    //         "correct_answer": "'const'",
-    //         "category": null,
-    //         "difficulty_level": null,
-    //         "explanation_text": null,
-    //         "tags": null,
-    //         "options": "['const', 'var', 'let', 'constant']",
-    //         "total_questions": 5,
-    //         "is_active": true
-    //     },
-    //     {
-    //         "question_id": "b3f32cb2-e1e6-466f-89af-ea174e20ba4d",
-    //         "question_text": "Which of the following methods can be used to display data in some form using Javascript?",
-    //         "correct_answer": "'All of the above'",
-    //         "category": null,
-    //         "difficulty_level": null,
-    //         "explanation_text": null,
-    //         "tags": null,
-    //         "options": "['document.write()', 'console.log()', 'window.alert', 'All of the above']",
-    //         "total_questions": 5,
-    //         "is_active": true
-    //     },
-    //     {
-    //         "question_id": "f903d9b0-77ea-4d4f-9fbd-604dbf7c708a",
-    //         "question_text": "Which of the following keywords is used to define a variable in Javascript?",
-    //         "correct_answer": "'var and let'",
-    //         "category": null,
-    //         "difficulty_level": null,
-    //         "explanation_text": null,
-    //         "tags": null,
-    //         "options": "['var', 'let', 'var and let', 'None of the above']",
-    //         "total_questions": 5,
-    //         "is_active": true
-    //     },
-    //     {
-    //         "question_id": "7eb8611c-fc8a-4d0f-933d-59888d88167d",
-    //         "question_text": "what is my name?",
-    //         "correct_answer": "'venkatesh'",
-    //         "category": null,
-    //         "difficulty_level": null,
-    //         "explanation_text": null,
-    //         "tags": null,
-    //         "options": "['venky', 'venkatesh', 'venkat', 'none']",
-    //         "total_questions": 5,
-    //         "is_active": true
-    //     },
-    //     {
-    //         "question_id": "cce3f043-58ba-4cf6-ac98-f5779beb539f",
-    //         "question_text": "what is the latest techStack that used in Upraised?",
-    //         "correct_answer": "'ReactJs'",
-    //         "category": null,
-    //         "difficulty_level": null,
-    //         "explanation_text": null,
-    //         "tags": null,
-    //         "options": "['ReactJs', 'Angular', 'BootStrap', 'HTML']",
-    //         "total_questions": 5,
-    //         "is_active": true
-    //     }
-    // ]
     const [activeQuestion, setActiveQuestion] = useState(0)
     const [selectedAnswer, setSelectedAnswer] = useState('')
     const [showResult, setShowResult] = useState(false)
@@ -82,7 +20,6 @@ function Quiz(){
     const [seconds, setSeconds] = useState(0);
     const[submittedAnswers,setSubmittedAnswers]=useState([])
     const[accepted,setAccepted]=useState(false)
-    // const [selectedOption, setSelectedOption] = useState('');
     const [questionIndex, setQuestionIndex] = useState(0);
     const[open,setOpen]=useState(false)
 
@@ -130,8 +67,6 @@ function Quiz(){
     }
     const progress=!createLoading && (result.score/(createData.length*5))*100;
     const currentQuestion = createLoading ? 'loading' : createData[questionIndex];
-    // const progress=(result.score/(createData.length*5))*100;
-    // const currentQuestion = createData[questionIndex];
 
     const onAnswerSelected = (answer,index) => {
         setSubmittedAnswers((prevAnswers) => [...prevAnswers, answer]);
@@ -147,10 +82,6 @@ function Quiz(){
         const totalTime = !createLoading && createData.length * 60;
         setSeconds(totalTime);
     }, [createLoading, createData]);
-    // useEffect(() => {
-    //     const totalTime = createData.length * 60;
-    //     setSeconds(totalTime);
-    // },[createData.length]);
 
     useEffect(() => {
         const interval = setInterval(() => {

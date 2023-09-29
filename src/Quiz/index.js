@@ -147,12 +147,10 @@ function Quiz(){
     //     const totalTime = !createLoading && createData.length * 60;
     //     setSeconds(totalTime);
     // }, [createLoading, createData]);
-    // useEffect(() => {
-    //     const totalTime = createData.length * 60;
-    //     setSeconds(totalTime);
-    // }, [createData]);
-    const totalTime = createData.length * 60;
-    setSeconds(totalTime);
+    useEffect(() => {
+        const totalTime = createData.length * 60;
+        setSeconds(totalTime);
+    },[createData.length]);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -174,7 +172,7 @@ function Quiz(){
     return (
         <>
             {/* {!createLoading && !allow  */}
-            {!allow 
+            {!allow
             ? 
                 <div className={styles.quiz_container}>
                     { !showResult  ? (
@@ -285,7 +283,7 @@ function Quiz(){
                     )}    
                 </div>
             : 
-                !open && <Startpage setAllow={setAllow} allow={allow} setSeconds={setSeconds} createData={createData} setOpen={setOpen} open={open}/>
+                !open&&<Startpage setAllow={setAllow} allow={allow} setSeconds={setSeconds} createData={createData} setOpen={setOpen} open={open}/>
             }
             {open && (
                 <>

@@ -4,7 +4,7 @@ function Startpage({setAllow,allow,setSeconds,createData,setOpen,open}){
     const handleStart=()=>{
         setAllow(!allow)
         setOpen(false)
-        setSeconds(createData.length*60)
+        setSeconds(10)
     }
     return(
         <>

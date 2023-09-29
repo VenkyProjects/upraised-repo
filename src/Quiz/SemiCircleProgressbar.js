@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import styles from './styles.module.css'
+import styles from './styles.module.css';
+
 function SemiCircleProgressBar({ value }) {
   const [lineX1, setLineX1] = useState(100);
   const [lineY1, setLineY1] = useState(50);

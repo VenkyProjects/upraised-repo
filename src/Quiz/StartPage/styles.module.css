@@ -1,0 +1,45 @@
+.start{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 90px;
+    font-size: 40px;
+    font-weight: 900;
+    color: red;
+}
+.top{
+    min-width: 226px;
+    height: 266px;
+    background: #ffffff;
+    border-radius: 50%; /* Set border-radius to 50% for a circular shape */
+    margin-top: 150px;
+    padding: 30px 40px;
+    @media screen and (max-width:768px){
+        min-width: 226px;
+        height: 266px;
+    }
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.image{
+    height: 30px;
+    width: 30px;
+}
+.bottom{
+    margin-top:50px;
+}
+.button{
+    cursor: pointer;
+    height: 50px;
+    width: 320px;
+    border-radius: 30px;
+    color: white;
+    border: none;
+    font-size:25px;
+    font-weight: 900;
+    background-color: #FF3B3C;
+}

@@ -284,15 +284,14 @@ function Quiz(){
                     )}    
                 </div>
             : 
-                !open&&<Startpage setAllow={setAllow} allow={allow} setSeconds={setSeconds} createData={createData} setOpen={setOpen} open={open}/>
-            }
-            {open && (
+                !open?<Startpage setAllow={setAllow} allow={allow} setSeconds={setSeconds} createData={createData} setOpen={setOpen} open={open}/>
+                :
                 <>
                     <h1>Time Up</h1>
                     <img src='https://img.freepik.com/premium-photo/time-up-word-with-clock-yellow-background_121826-322.jpg' alt='img'/>
                     <h2>Better Luck for next Time</h2>
                 </>
-            )}
+            }
 
         </>
     )

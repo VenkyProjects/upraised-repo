@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/upraised-repo/static/css/main.9acdb769.css",
+    "main.js": "/upraised-repo/static/js/main.f03c4919.js",
+    "static/js/787.c3a344b4.chunk.js": "/upraised-repo/static/js/787.c3a344b4.chunk.js",
+    "index.html": "/upraised-repo/index.html",
+    "main.9acdb769.css.map": "/upraised-repo/static/css/main.9acdb769.css.map",
+    "main.f03c4919.js.map": "/upraised-repo/static/js/main.f03c4919.js.map",
+    "787.c3a344b4.chunk.js.map": "/upraised-repo/static/js/787.c3a344b4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9acdb769.css",
+    "static/js/main.f03c4919.js"
+  ]
+}

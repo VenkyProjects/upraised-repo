@@ -13,7 +13,6 @@ body {
     width:500px;
     min-width: 250px;
     background: #ffffff;
-    border-radius: 4px;
     margin-top: 100px;
     padding: 30px 60px;
     border-radius: 20px;
@@ -23,22 +22,17 @@ body {
   }
   
   .quiz_container .active_question_no {
-    font-size: 32px;
-    font-weight: 500;
-    font-style: italic;
-    color: #000000;
-    font-weight: 900;
+    font: italic 900 32px/1 'Anek Malayalam', sans-serif;
+    color: #000;
   }
   
   .quiz_container .total_question {
-    font-size: 16px;
-    font-weight: 500;
+    font: 500 16px/1 'Anek Malayalam', sans-serif;
     color: #999999;
   }
   
   .quiz_container h2 {
-    font-size: 20px;
-    font-weight: 500;
+    font: 500 20px/1 'Anek Malayalam', sans-serif;
     margin: 0;
   }
   
@@ -78,7 +72,6 @@ body {
   }
   
   .quiz_container button {
-    /* background: linear-gradient(90.04deg, #800080 0.03%, #ffc0cb 99.96%); */
     background: red;
     font-size: 18px;
     color: #ffffff;
@@ -88,7 +81,6 @@ body {
     border-radius: 40px;
     cursor: pointer;
     margin-top: 15px;
-    /* width: 250px; */
     height:45px;
     
   }
@@ -100,7 +92,6 @@ body {
   }
   
   .flex_right {
-    /* display: flex; */
     justify-content: center;
     display: flex;
     flex-direction: row;
@@ -174,7 +165,6 @@ margin: 0;
 .semi_circle_progress {
   fill: none;
   stroke: #37cc37;
-  /* stroke: #007bff; */
   stroke-width: 10;
   transition: stroke-dashoffset 0.3s ease;
 }
